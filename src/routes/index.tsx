@@ -273,7 +273,7 @@ function Index() {
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">„{card.d}“</p>
               </article>
             ))}
-          </div>
+          </Reveal>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
             Der Ballon-Ultralauf verbindet unterschiedliche Leistungsniveaus in derselben
             Veranstaltung.
