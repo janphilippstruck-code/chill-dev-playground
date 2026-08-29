@@ -494,7 +494,7 @@ function Index() {
                 </li>
               ))}
             </ol>
-          </div>
+          </Reveal>
 
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Aus einem kleinen Lauf unter Freunden entwickelte sich ein Community-Format mit
