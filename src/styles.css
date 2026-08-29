@@ -166,5 +166,50 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 }
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Dezenter Farbstreifen aus der Ballontextur – nur als schmale Linie */
+@utility balloon-rule {
+  height: 4px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--bal-red) 0 12.5%,
+    var(--bal-orange) 12.5% 25%,
+    var(--bal-yellow) 25% 37.5%,
+    var(--bal-green) 37.5% 50%,
+    var(--bal-teal) 50% 62.5%,
+    var(--bal-blue) 62.5% 75%,
+    var(--bal-violet) 75% 87.5%,
+    var(--bal-pink) 87.5% 100%
+  );
+}
+
