@@ -257,7 +257,7 @@ function Index() {
             <br />
             Beides gehört dazu.
           </h2>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <Reveal className="mt-10 grid gap-4 lg:grid-cols-3">
             {[
               { t: "Eine Runde", d: "Einfach Teil des Ballon-Ultralaufs sein.", c: "var(--bal-green)" },
               {
