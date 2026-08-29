@@ -9,28 +9,31 @@ import {
   ShowerHead,
 } from "lucide-react";
 import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
 import logo from "@/assets/logo-ballon-ultralauf.png.asset.json";
 import historie from "@/assets/historie-ballon-ultralauf.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ballon-Ultralauf Welver – 2.–4. Juli 2027" },
+      { title: "Ballon-Ultralauf Welver 2027 | 2.–4. Juli 2027" },
       {
         name: "description",
         content:
-          "Ballon-Ultralauf Welver, 2.–4. Juli 2027 im Buchenwaldstadion: acht gemeinsame Starts, vier Strecken, bis zu 100 km und die 100-Meilen-Challenge.",
+          "Der Ballon-Ultralauf kehrt zurück. Acht gemeinsame Starts, vier Strecken und bis zu 100 Kilometer im Buchenwaldstadion Welver. Für die ganz große Herausforderung: 100 Meilen.",
       },
-      { property: "og:title", content: "Ballon-Ultralauf Welver – 2.–4. Juli 2027" },
+      { property: "og:title", content: "Ballon-Ultralauf Welver 2027" },
       {
         property: "og:description",
         content:
-          "Acht gemeinsame Starts. Vier unterschiedliche Strecken. Bis zu 100 Kilometer – und für die ganz große Herausforderung auch 100 Meilen.",
+          "Wer früher im Ziel ist, kann länger Pause machen. Der Ballon-Ultralauf kehrt 2027 in Welver zurück.",
       },
     ],
   }),
   component: Index,
 });
+
 
 const ROUNDS = [
   { n: 1, km: "20 KM", when: "Samstag · 08:00 Uhr", window: "4 Stunden", color: "var(--bal-red)" },
