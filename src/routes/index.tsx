@@ -9,28 +9,31 @@ import {
   ShowerHead,
 } from "lucide-react";
 import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
 import logo from "@/assets/logo-ballon-ultralauf.png.asset.json";
 import historie from "@/assets/historie-ballon-ultralauf.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Ballon-Ultralauf Welver – 2.–4. Juli 2027" },
+      { title: "Ballon-Ultralauf Welver 2027 | 2.–4. Juli 2027" },
       {
         name: "description",
         content:
-          "Ballon-Ultralauf Welver, 2.–4. Juli 2027 im Buchenwaldstadion: acht gemeinsame Starts, vier Strecken, bis zu 100 km und die 100-Meilen-Challenge.",
+          "Der Ballon-Ultralauf kehrt zurück. Acht gemeinsame Starts, vier Strecken und bis zu 100 Kilometer im Buchenwaldstadion Welver. Für die ganz große Herausforderung: 100 Meilen.",
       },
-      { property: "og:title", content: "Ballon-Ultralauf Welver – 2.–4. Juli 2027" },
+      { property: "og:title", content: "Ballon-Ultralauf Welver 2027" },
       {
         property: "og:description",
         content:
-          "Acht gemeinsame Starts. Vier unterschiedliche Strecken. Bis zu 100 Kilometer – und für die ganz große Herausforderung auch 100 Meilen.",
+          "Wer früher im Ziel ist, kann länger Pause machen. Der Ballon-Ultralauf kehrt 2027 in Welver zurück.",
       },
     ],
   }),
   component: Index,
 });
+
 
 const ROUNDS = [
   { n: 1, km: "20 KM", when: "Samstag · 08:00 Uhr", window: "4 Stunden", color: "var(--bal-red)" },
@@ -202,28 +205,31 @@ function Index() {
           </p>
 
           {/* Mobile: vertikale Timeline · Desktop: Kartenreihe */}
-          <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {ROUNDS.map((r) => (
-              <li
-                key={r.n}
-                className="relative overflow-hidden rounded-xl border border-border bg-background p-5 pl-6"
-              >
-                <span
-                  aria-hidden
-                  className="absolute top-0 bottom-0 left-0 w-1.5"
-                  style={{ background: r.color }}
-                />
-                <div className="flex items-baseline gap-3">
-                  <span className="font-display text-3xl font-extrabold" style={{ color: r.color }}>
-                    {r.n}
-                  </span>
-                  <span className="font-display text-2xl font-extrabold">{r.km}</span>
-                </div>
-                <p className="mt-3 text-sm font-semibold">{r.when}</p>
-                <p className="mt-1 text-sm text-muted-foreground">Zeitfenster: {r.window}</p>
-              </li>
-            ))}
-          </ol>
+          <Reveal>
+            <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {ROUNDS.map((r) => (
+                <li
+                  key={r.n}
+                  className="relative overflow-hidden rounded-xl border border-border bg-background p-5 pl-6 transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <span
+                    aria-hidden
+                    className="absolute top-0 bottom-0 left-0 w-1.5"
+                    style={{ background: r.color }}
+                  />
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-display text-3xl font-extrabold" style={{ color: r.color }}>
+                      {r.n}
+                    </span>
+                    <span className="font-display text-2xl font-extrabold">{r.km}</span>
+                  </div>
+                  <p className="mt-3 text-sm font-semibold">{r.when}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Zeitfenster: {r.window}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
 
           <p className="mt-8 text-sm font-semibold text-muted-foreground">
             Ende des Hauptprogramms: Sonntag gegen 04:00 Uhr.
@@ -251,7 +257,7 @@ function Index() {
             <br />
             Beides gehört dazu.
           </h2>
-          <div className="mt-10 grid gap-4 lg:grid-cols-3">
+          <Reveal className="mt-10 grid gap-4 lg:grid-cols-3">
             {[
               { t: "Eine Runde", d: "Einfach Teil des Ballon-Ultralaufs sein.", c: "var(--bal-green)" },
               {
@@ -267,7 +273,7 @@ function Index() {
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">„{card.d}“</p>
               </article>
             ))}
-          </div>
+          </Reveal>
           <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground">
             Der Ballon-Ultralauf verbindet unterschiedliche Leistungsniveaus in derselben
             Veranstaltung.
@@ -283,7 +289,7 @@ function Index() {
             <br />
             Acht Starts.
           </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <Reveal className="mt-10 grid gap-4 sm:grid-cols-2">
             {COURSES.map((c) => (
               <article
                 key={c.km}
@@ -301,7 +307,7 @@ function Index() {
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.note}</p>
               </article>
             ))}
-          </div>
+          </Reveal>
           <p className="mt-9 max-w-2xl border-l-4 pl-5 text-base leading-relaxed text-muted-foreground" style={{ borderColor: "var(--bal-teal)" }}>
             Die vier Strecken befinden sich derzeit in der finalen Befahrung, Vermessung und
             Abstimmung. Die endgültigen GPX-Dateien werden mit der Ausschreibung veröffentlicht.
@@ -460,7 +466,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
           <h2 className="text-[2rem] sm:text-5xl">Von 2018 nach Welver.</h2>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+          <Reveal className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
             <figure>
               <img
                 src={historie.url}
@@ -488,7 +494,7 @@ function Index() {
                 </li>
               ))}
             </ol>
-          </div>
+          </Reveal>
 
           <p className="mt-12 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
             Aus einem kleinen Lauf unter Freunden entwickelte sich ein Community-Format mit
@@ -548,31 +554,8 @@ function Index() {
       </section>
 
       {/* ---------- FOOTER ---------- */}
-      <footer className="border-t border-border">
-        <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 sm:flex-row sm:items-end sm:justify-between sm:px-8">
-          <div>
-            <p className="font-display text-lg font-extrabold">Ballon-Ultralauf Welver</p>
-            <p className="mt-1 text-sm text-muted-foreground">Veranstalter: Ballonläufer</p>
-          </div>
-          <nav className="flex flex-wrap gap-x-6 gap-y-2 text-sm font-semibold text-muted-foreground">
-            <a href="https://ballonlaeufer.de" className="transition-colors hover:text-foreground">
-              Ballonläufer
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Impressum
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Datenschutz
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Kontakt
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Instagram
-            </a>
-          </nav>
-        </div>
-      </footer>
+      <Footer />
+
     </div>
   );
 }
