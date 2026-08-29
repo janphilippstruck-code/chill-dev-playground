@@ -289,7 +289,7 @@ function Index() {
             <br />
             Acht Starts.
           </h2>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <Reveal className="mt-10 grid gap-4 sm:grid-cols-2">
             {COURSES.map((c) => (
               <article
                 key={c.km}
