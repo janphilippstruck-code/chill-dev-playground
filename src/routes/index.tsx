@@ -307,7 +307,7 @@ function Index() {
                 <p className="mt-3 text-base leading-relaxed text-muted-foreground">{c.note}</p>
               </article>
             ))}
-          </div>
+          </Reveal>
           <p className="mt-9 max-w-2xl border-l-4 pl-5 text-base leading-relaxed text-muted-foreground" style={{ borderColor: "var(--bal-teal)" }}>
             Die vier Strecken befinden sich derzeit in der finalen Befahrung, Vermessung und
             Abstimmung. Die endgültigen GPX-Dateien werden mit der Ausschreibung veröffentlicht.
