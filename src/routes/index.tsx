@@ -466,7 +466,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
           <h2 className="text-[2rem] sm:text-5xl">Von 2018 nach Welver.</h2>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+          <Reveal className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
             <figure>
               <img
                 src={historie.url}
