@@ -205,28 +205,31 @@ function Index() {
           </p>
 
           {/* Mobile: vertikale Timeline · Desktop: Kartenreihe */}
-          <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {ROUNDS.map((r) => (
-              <li
-                key={r.n}
-                className="relative overflow-hidden rounded-xl border border-border bg-background p-5 pl-6"
-              >
-                <span
-                  aria-hidden
-                  className="absolute top-0 bottom-0 left-0 w-1.5"
-                  style={{ background: r.color }}
-                />
-                <div className="flex items-baseline gap-3">
-                  <span className="font-display text-3xl font-extrabold" style={{ color: r.color }}>
-                    {r.n}
-                  </span>
-                  <span className="font-display text-2xl font-extrabold">{r.km}</span>
-                </div>
-                <p className="mt-3 text-sm font-semibold">{r.when}</p>
-                <p className="mt-1 text-sm text-muted-foreground">Zeitfenster: {r.window}</p>
-              </li>
-            ))}
-          </ol>
+          <Reveal>
+            <ol className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {ROUNDS.map((r) => (
+                <li
+                  key={r.n}
+                  className="relative overflow-hidden rounded-xl border border-border bg-background p-5 pl-6 transition-transform duration-300 hover:-translate-y-1"
+                >
+                  <span
+                    aria-hidden
+                    className="absolute top-0 bottom-0 left-0 w-1.5"
+                    style={{ background: r.color }}
+                  />
+                  <div className="flex items-baseline gap-3">
+                    <span className="font-display text-3xl font-extrabold" style={{ color: r.color }}>
+                      {r.n}
+                    </span>
+                    <span className="font-display text-2xl font-extrabold">{r.km}</span>
+                  </div>
+                  <p className="mt-3 text-sm font-semibold">{r.when}</p>
+                  <p className="mt-1 text-sm text-muted-foreground">Zeitfenster: {r.window}</p>
+                </li>
+              ))}
+            </ol>
+          </Reveal>
+
 
           <p className="mt-8 text-sm font-semibold text-muted-foreground">
             Ende des Hauptprogramms: Sonntag gegen 04:00 Uhr.
