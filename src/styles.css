@@ -26,6 +26,8 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Barlow", ui-sans-serif, system-ui, sans-serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -46,6 +48,16 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-ring-offset-background: var(--background);
+  --color-ink: var(--ink);
+  --color-surface: var(--surface);
+  --color-bal-red: var(--bal-red);
+  --color-bal-orange: var(--bal-orange);
+  --color-bal-yellow: var(--bal-yellow);
+  --color-bal-green: var(--bal-green);
+  --color-bal-teal: var(--bal-teal);
+  --color-bal-blue: var(--bal-blue);
+  --color-bal-violet: var(--bal-violet);
+  --color-bal-pink: var(--bal-pink);
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
@@ -61,27 +73,41 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --radius: 0.5rem;
+  /* Warmes Off-White als Hauptgrund, Anthrazit für Text */
+  --background: oklch(0.987 0.005 95);
+  --foreground: oklch(0.238 0.008 265);
+  --ink: oklch(0.238 0.008 265);
+  --surface: oklch(1 0 0);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.238 0.008 265);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --popover-foreground: oklch(0.238 0.008 265);
+  --primary: oklch(0.238 0.008 265);
+  --primary-foreground: oklch(0.99 0.004 95);
+  --secondary: oklch(0.955 0.008 95);
+  --secondary-foreground: oklch(0.238 0.008 265);
+  --muted: oklch(0.955 0.008 95);
+  --muted-foreground: oklch(0.505 0.012 265);
+  --accent: oklch(0.955 0.008 95);
+  --accent-foreground: oklch(0.238 0.008 265);
   --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --destructive-foreground: oklch(0.99 0.004 95);
+  --border: oklch(0.905 0.008 95);
+  --input: oklch(0.905 0.008 95);
+  --ring: oklch(0.6 0.13 230);
+  /* Farben aus der Ballontextur des Logos */
+  --bal-red: oklch(0.578 0.226 27.5);
+  --bal-orange: oklch(0.686 0.19 45);
+  --bal-yellow: oklch(0.845 0.166 88);
+  --bal-green: oklch(0.638 0.183 141);
+  --bal-teal: oklch(0.678 0.128 213);
+  --bal-blue: oklch(0.492 0.204 264);
+  --bal-violet: oklch(0.52 0.216 316);
+  --bal-pink: oklch(0.63 0.26 350);
+
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -140,5 +166,50 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.98;
+    text-wrap: balance;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
   }
 }
+
+@utility eyebrow {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Dezenter Farbstreifen aus der Ballontextur – nur als schmale Linie */
+@utility balloon-rule {
+  height: 4px;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    var(--bal-red) 0 12.5%,
+    var(--bal-orange) 12.5% 25%,
+    var(--bal-yellow) 25% 37.5%,
+    var(--bal-green) 37.5% 50%,
+    var(--bal-teal) 50% 62.5%,
+    var(--bal-blue) 62.5% 75%,
+    var(--bal-violet) 75% 87.5%,
+    var(--bal-pink) 87.5% 100%
+  );
+}
+
