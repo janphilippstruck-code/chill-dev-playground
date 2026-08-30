@@ -134,7 +134,7 @@ function Index() {
             <img
               src={logo.url}
               alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-              className="w-full max-w-[320px] object-contain sm:max-w-[620px]"
+              className="w-full max-w-[320px] object-contain mix-blend-multiply sm:max-w-[620px]"
             />
 
             <p className="eyebrow mt-4 text-muted-foreground sm:mt-8">
@@ -628,7 +628,7 @@ function Index() {
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
             loading="lazy"
-            className="mx-auto w-full max-w-[280px] object-contain sm:max-w-[460px]"
+            className="mx-auto w-full max-w-[280px] object-contain mix-blend-multiply sm:max-w-[460px]"
           />
           <div className="mt-6 space-y-1 sm:mt-9 sm:space-y-1.5">
             <p className="eyebrow">Ballon-Ultralauf Welver</p>
