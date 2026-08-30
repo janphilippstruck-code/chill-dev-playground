@@ -455,7 +455,7 @@ function Index() {
         <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
           <h2 className="text-[1.85rem] sm:text-5xl">Von 2018 nach Welver.</h2>
 
-          <Reveal className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
+          <Reveal className="mt-6 grid gap-6 sm:mt-10 sm:gap-10 lg:grid-cols-2 lg:items-start">
             <figure>
               <img
                 src={historie.url}
@@ -463,29 +463,31 @@ function Index() {
                 loading="lazy"
                 className="aspect-4/3 w-full rounded-2xl object-cover"
               />
-              <figcaption className="mt-3 text-sm text-muted-foreground">
+              <figcaption className="mt-2.5 text-sm text-muted-foreground sm:mt-3">
                 Ballon-Ultralauf – Impression aus den früheren Veranstaltungsjahren.
               </figcaption>
             </figure>
 
-            <ol className="relative border-l border-border pl-6">
+            <ol className="relative border-l border-border pl-5 sm:pl-6">
               {HISTORY.map((h) => (
-                <li key={h.year} className="relative pb-7 last:pb-0">
+                <li key={h.year} className="relative pb-5 last:pb-0 sm:pb-7">
                   <span
                     aria-hidden
-                    className="absolute top-2 -left-[1.9rem] h-3 w-3 rounded-full"
+                    className="absolute top-2 -left-[1.65rem] h-3 w-3 rounded-full sm:-left-[1.9rem]"
                     style={{ background: h.color }}
                   />
-                  <p className="font-display text-2xl font-extrabold" style={{ color: h.color }}>
+                  <p className="font-display text-xl font-extrabold sm:text-2xl" style={{ color: h.color }}>
                     {h.year}
                   </p>
-                  <p className="mt-1 text-base leading-relaxed text-muted-foreground">„{h.text}“</p>
+                  <p className="mt-0.5 text-[0.975rem] leading-snug text-muted-foreground sm:mt-1 sm:text-base sm:leading-relaxed">
+                    „{h.text}“
+                  </p>
                 </li>
               ))}
             </ol>
           </Reveal>
 
-          <p className="mt-12 max-w-3xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-7 max-w-3xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-12 sm:text-lg sm:leading-relaxed">
             Aus einem kleinen Lauf unter Freunden entwickelte sich ein Community-Format mit
             Teilnehmenden aus der Region und darüber hinaus. 2027 kehrt der Ballon-Ultralauf zurück –
             mit der ursprünglichen Idee, aber an einem neuen Standort.
