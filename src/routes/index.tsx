@@ -391,7 +391,7 @@ function Index() {
 
       {/* ---------- MITTEN DURCH WELVER ---------- */}
       <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-24">
           <h2 className="text-[2rem] sm:text-5xl">Mitten durch Welver.</h2>
           <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
@@ -428,7 +428,7 @@ function Index() {
 
       {/* ---------- ORIENTIERUNG UND NACHT ---------- */}
       <section className="border-b border-border">
-        <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-5xl px-5 py-11 sm:px-8 sm:py-20">
           <h2 className="text-[2rem] sm:text-5xl">Damit du deine Runde findest.</h2>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
             {["GPX", "Streckenmarkierung", "Vorhandene Wegeschilder"].map((item, i) => (
@@ -452,7 +452,7 @@ function Index() {
 
       {/* ---------- GESCHICHTE / COMEBACK ---------- */}
       <section id="geschichte" className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
           <h2 className="text-[2rem] sm:text-5xl">Von 2018 nach Welver.</h2>
 
           <Reveal className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
@@ -495,7 +495,7 @@ function Index() {
 
       {/* ---------- AKTUELLER STAND ---------- */}
       <section id="stand" className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-3xl px-5 py-11 sm:px-8 sm:py-20">
           <p className="eyebrow" style={{ color: "var(--bal-blue)" }}>
             Aktueller Stand
           </p>
@@ -516,7 +516,7 @@ function Index() {
 
       {/* ---------- ABSCHLUSS-CTA ---------- */}
       <section className="bg-surface">
-        <div className="mx-auto max-w-5xl px-5 py-16 text-center sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-5xl px-5 py-12 text-center sm:px-8 sm:py-24">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
