@@ -84,6 +84,10 @@
   --foreground: oklch(0.238 0.008 265);
   --ink: oklch(0.238 0.008 265);
   --surface: oklch(1 0 0);
+  /* Sehr dezente getönte Flächen für Abschnittsrhythmus */
+  --tint-teal: oklch(0.977 0.014 213);
+  --tint-yellow: oklch(0.982 0.019 95);
+  --tint-green: oklch(0.978 0.016 141);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.238 0.008 265);
   --popover: oklch(1 0 0);
