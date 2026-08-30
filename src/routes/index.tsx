@@ -512,11 +512,11 @@ function Index() {
             dazwischen ab.
           </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-3 lg:grid-cols-3">
+          <div className="mt-6 grid auto-rows-[5.5rem] grid-cols-2 gap-2.5 sm:mt-10 sm:auto-rows-[7rem] sm:gap-3 lg:grid-cols-3">
             {STADIUM_INFO.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex h-full min-h-[4.5rem] flex-col justify-between gap-2 rounded-xl border border-border bg-surface p-3.5 sm:min-h-[5.5rem] sm:p-5"
+                className="flex h-full flex-col justify-between gap-2 rounded-xl border border-border bg-surface p-3.5 sm:p-5"
               >
                 <Icon
                   className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
