@@ -34,36 +34,40 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-
 const ROUNDS = [
-  { n: 1, km: "20 KM", when: "Samstag · 08:00 Uhr", window: "4 Stunden", color: "var(--bal-red)" },
-  { n: 2, km: "15 KM", when: "Samstag · 12:00 Uhr", window: "3 Stunden", color: "var(--bal-orange)" },
-  { n: 3, km: "10 KM", when: "Samstag · 15:00 Uhr", window: "2 Stunden", color: "var(--bal-yellow)" },
-  { n: 4, km: "5 KM", when: "Samstag · 17:00 Uhr", window: "1 Stunde", color: "var(--bal-green)" },
-  { n: 5, km: "5 KM", when: "Samstag · 18:00 Uhr", window: "1 Stunde", color: "var(--bal-teal)" },
-  { n: 6, km: "10 KM", when: "Samstag · 19:00 Uhr", window: "2 Stunden", color: "var(--bal-blue)" },
-  { n: 7, km: "15 KM", when: "Samstag · 21:00 Uhr", window: "3 Stunden", color: "var(--bal-violet)" },
-  { n: 8, km: "20 KM", when: "Sonntag · 00:00 Uhr", window: "4 Stunden", color: "var(--bal-pink)" },
+  { n: 1, km: "20 KM", day: "Samstag", time: "08:00", window: "4 h", color: "var(--bal-red)" },
+  { n: 2, km: "15 KM", day: "Samstag", time: "12:00", window: "3 h", color: "var(--bal-orange)" },
+  { n: 3, km: "10 KM", day: "Samstag", time: "15:00", window: "2 h", color: "var(--bal-yellow)" },
+  { n: 4, km: "5 KM", day: "Samstag", time: "17:00", window: "1 h", color: "var(--bal-green)" },
+  { n: 5, km: "5 KM", day: "Samstag", time: "18:00", window: "1 h", color: "var(--bal-teal)" },
+  { n: 6, km: "10 KM", day: "Samstag", time: "19:00", window: "2 h", color: "var(--bal-blue)" },
+  { n: 7, km: "15 KM", day: "Samstag", time: "21:00", window: "3 h", color: "var(--bal-violet)" },
+  { n: 8, km: "20 KM", day: "Sonntag", time: "00:00", window: "4 h", color: "var(--bal-pink)" },
 ];
 
 const COURSES = [
-  { km: "5 KM", title: "Die kurze Runde.", note: "ortsnah und kompakt.", color: "var(--bal-green)" },
+  {
+    km: "5 KM",
+    title: "Die kurze Runde.",
+    note: "Kurz, kompakt und nah am Buchenwaldstadion.",
+    color: "var(--bal-green)",
+  },
   {
     km: "10 KM",
     title: "Die mittlere Runde.",
-    note: "derzeit noch in der finalen Streckenplanung.",
+    note: "Die mittlere Runde befindet sich derzeit noch in der finalen Streckenplanung.",
     color: "var(--bal-teal)",
   },
   {
     km: "15 KM",
     title: "Auf Welveraner Wanderwegen.",
-    note: "orientiert sich weitgehend am offiziellen Wanderweg A4.",
+    note: "Die Runde orientiert sich weitgehend am offiziellen Welveraner Wanderweg A4.",
     color: "var(--bal-orange)",
   },
   {
     km: "20 KM",
     title: "Die große Runde.",
-    note: 'orientiert sich an der ausgeschilderten 21,1-km-Variante der Welveraner „5 am Tag“-Marathonroute.',
+    note: 'Die längste Runde orientiert sich an der ausgeschilderten 21,1-km-Variante der Welveraner „5 am Tag“-Marathonroute.',
     color: "var(--bal-red)",
   },
 ];
@@ -74,7 +78,11 @@ const HISTORY = [
   { year: "2020", text: "100 Meilen.", color: "var(--bal-yellow)" },
   { year: "2021", text: "125 Meilen.", color: "var(--bal-green)" },
   { year: "2022", text: "Weitere Ballon-Ultra-Formate.", color: "var(--bal-teal)" },
-  { year: "2027", text: "Der Ballon-Ultralauf bekommt in Welver eine neue Heimat.", color: "var(--bal-violet)" },
+  {
+    year: "2027",
+    text: "Der Ballon-Ultralauf bekommt in Welver eine neue Heimat.",
+    color: "var(--bal-violet)",
+  },
 ];
 
 const STADIUM_INFO = [
@@ -83,7 +91,14 @@ const STADIUM_INFO = [
   { icon: Timer, label: "Zeitnahme" },
   { icon: Backpack, label: "Eigenverpflegung" },
   { icon: Tent, label: "Aufenthalt & Ruhe" },
-  { icon: ShowerHead, label: "Toiletten / Duschen", sub: "nach Verfügbarkeit" },
+  { icon: ShowerHead, label: "Toiletten / Duschen" },
+];
+
+const PRINCIPLE_STEPS = [
+  { time: "08:00", label: "Gemeinsamer Start", color: "var(--bal-red)" },
+  { time: "Runde", label: "Laufen auf einer der vier Strecken", color: "var(--bal-teal)" },
+  { time: "Ziel", label: "Zurück im Basecamp", color: "var(--bal-green)" },
+  { time: "Pause", label: "Bis zum nächsten gemeinsamen Start", color: "var(--bal-yellow)" },
 ];
 
 function Index() {
@@ -93,89 +108,174 @@ function Index() {
 
       {/* ---------- HERO ---------- */}
       <section className="relative overflow-hidden border-b border-border bg-surface">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full opacity-[0.07] blur-2xl"
-          style={{ background: "var(--bal-teal)" }}
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-32 -left-24 h-80 w-80 rounded-full opacity-[0.06] blur-2xl"
-          style={{ background: "var(--bal-yellow)" }}
-        />
-        <div className="relative mx-auto max-w-5xl px-5 py-9 sm:px-8 sm:py-24">
-          <h1 className="sr-only">Ballon-Ultralauf Welver 2027</h1>
-          <img
-            src={logo.url}
-            alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-            className="w-full max-w-[300px] object-contain sm:max-w-[560px]"
+        {/* Abstrakte Farbflächen aus der Ballon-Farbwelt (keine Grafiken, keine Verläufe) */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div
+            className="absolute -top-24 -right-16 h-[22rem] w-[22rem] rounded-full opacity-[0.10] sm:-right-24 sm:h-[34rem] sm:w-[34rem] sm:opacity-[0.13]"
+            style={{ background: "var(--bal-teal)" }}
           />
+          <div
+            className="absolute top-24 right-24 h-40 w-40 rounded-full opacity-[0.10] sm:top-40 sm:right-56 sm:h-64 sm:w-64"
+            style={{ background: "var(--bal-yellow)" }}
+          />
+          <div
+            className="absolute -bottom-28 -left-20 h-56 w-56 rounded-full opacity-[0.07] sm:h-80 sm:w-80"
+            style={{ background: "var(--bal-violet)" }}
+          />
+          <div
+            className="absolute right-0 bottom-0 h-2 w-full opacity-70 sm:h-2.5"
+            style={{ background: "var(--bal-green)" }}
+          />
+        </div>
 
-          <p className="eyebrow mt-5 text-muted-foreground sm:mt-8">
-            2.–4. Juli 2027 · Welver
-          </p>
+        <div className="relative mx-auto grid max-w-6xl gap-6 px-5 py-8 sm:px-8 sm:py-24 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:gap-12">
+          <div>
+            <h1 className="sr-only">Ballon-Ultralauf Welver 2027</h1>
+            <img
+              src={logo.url}
+              alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
+              className="w-full max-w-[320px] object-contain sm:max-w-[620px]"
+            />
 
-          <div className="mt-4 max-w-2xl sm:mt-7">
-            <div className="balloon-rule max-w-[100px] sm:max-w-[120px]" />
-            <p className="mt-4 font-display text-[1.65rem] leading-[1.05] font-extrabold sm:mt-5 sm:text-3xl lg:text-4xl">
-              „Wer früher im Ziel ist,
-              <br />
-              kann länger Pause machen.“
+            <p className="eyebrow mt-4 text-muted-foreground sm:mt-8">
+              2.–4. Juli 2027 · Welver
             </p>
+
+            <div className="mt-3 max-w-2xl sm:mt-7">
+              <div className="balloon-rule max-w-[120px] sm:max-w-[150px]" />
+              <p className="mt-3.5 font-display text-[1.75rem] leading-[1.05] font-extrabold sm:mt-5 sm:text-4xl lg:text-5xl">
+                „Wer früher im Ziel ist,
+                <br />
+                kann länger Pause machen.“
+              </p>
+            </div>
+
+            <p className="mt-3.5 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-7 sm:text-lg sm:leading-relaxed">
+              Acht Starts. Vier Strecken. 100 Kilometer.
+              <br />
+              Und für die ganz große Herausforderung: 100 Meilen.
+            </p>
+
+            <div className="mt-5 sm:mt-8">
+              <a
+                href="#konzept"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-display text-sm font-bold tracking-wide text-primary-foreground uppercase transition-transform hover:-translate-y-0.5 sm:w-auto sm:py-3.5"
+              >
+                Das Konzept entdecken <ArrowRight className="h-4 w-4" />
+              </a>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Die Anmeldung öffnet nach Abschluss der behördlichen Abstimmung.
+              </p>
+            </div>
           </div>
 
-          <p className="mt-4 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-7 sm:text-lg sm:leading-relaxed">
-            Acht Starts. Vier Strecken. 100 Kilometer.
-            <br />
-            Und für die ganz große Herausforderung: 100 Meilen.
-          </p>
+          {/* Große Typo-Kennzahlen als visuelles Gegengewicht (Desktop) */}
+          <div aria-hidden className="hidden lg:block">
+            <div className="ml-auto max-w-xs space-y-6">
+              {[
+                { v: "8", l: "gemeinsame Starts", c: "var(--bal-red)" },
+                { v: "4", l: "Strecken", c: "var(--bal-teal)" },
+                { v: "100", l: "Kilometer", c: "var(--bal-violet)" },
+              ].map((s) => (
+                <div key={s.l} className="flex items-baseline gap-4 border-b border-border pb-4">
+                  <span
+                    className="font-display text-6xl leading-none font-extrabold"
+                    style={{ color: s.c }}
+                  >
+                    {s.v}
+                  </span>
+                  <span className="eyebrow text-muted-foreground">{s.l}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="mt-6 sm:mt-8">
-            <a
-              href="#konzept"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 font-display text-sm font-bold tracking-wide text-primary-foreground uppercase transition-transform hover:-translate-y-0.5 sm:w-auto sm:py-3.5"
-            >
-              Das Konzept entdecken <ArrowRight className="h-4 w-4" />
-            </a>
-            <p className="mt-3 text-sm text-muted-foreground">
-              Die Anmeldung öffnet nach Abschluss der behördlichen Abstimmung.
-            </p>
+      {/* ---------- COMEBACK-TEASER ---------- */}
+      <section className="border-b border-border" style={{ background: "var(--tint-teal)" }}>
+        <div className="mx-auto max-w-5xl px-5 py-11 sm:px-8 sm:py-16">
+          <p className="eyebrow" style={{ color: "var(--bal-blue)" }}>
+            Der Ballon-Ultralauf ist zurück
+          </p>
+          <p className="mt-3 font-display text-[2rem] leading-[1.05] font-extrabold sm:mt-4 sm:text-5xl">
+            2018 begann die Geschichte.
+            <br />
+            2027 geht sie in Welver weiter.
+          </p>
+          <p className="mt-4 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-5 sm:text-lg sm:leading-relaxed">
+            Nach mehreren Veranstaltungsjahren bekommt der Ballon-Ultralauf im Buchenwaldstadion
+            Welver eine neue Heimat.
+          </p>
+          <div className="mt-5 flex items-center gap-2.5 sm:mt-7 sm:gap-4">
+            {[
+              { y: "2018", c: "var(--bal-red)" },
+              { y: "2022", c: "var(--bal-orange)" },
+              { y: "2027", c: "var(--bal-violet)" },
+            ].map((i, idx) => (
+              <div key={i.y} className="flex items-center gap-2.5 sm:gap-4">
+                <span
+                  className="font-display text-xl font-extrabold sm:text-3xl"
+                  style={{ color: i.c }}
+                >
+                  {i.y}
+                </span>
+                {idx < 2 && (
+                  <span aria-hidden className="h-px w-6 bg-border sm:w-12" />
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ---------- DAS PRINZIP ---------- */}
-      <section id="konzept" className="border-b border-border">
-        <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-24">
-          <p className="eyebrow" style={{ color: "var(--bal-red)" }}>
-            Das Prinzip
-          </p>
-          <h2 className="mt-3 text-[1.85rem] sm:mt-4 sm:text-5xl">Ein Ultralauf mit Pausen.</h2>
-          <div className="mt-5 max-w-2xl space-y-3.5 text-[0.975rem] leading-snug text-muted-foreground sm:mt-7 sm:space-y-5 sm:text-lg sm:leading-relaxed">
-            <p>Alle starten gemeinsam. Aber nicht alle kommen gleichzeitig zurück.</p>
-            <p>
-              Beim Ballon-Ultralauf stehen acht Runden mit festen Startzeiten auf dem Programm. Nach
-              jeder Runde geht es zurück ins Buchenwaldstadion. Wer schneller läuft, hat bis zum
-              nächsten gemeinsamen Start mehr Zeit zum Essen, Erholen, Duschen, Reden oder einfach zum
-              Füßehochlegen.
+      <section id="konzept" className="border-b border-border bg-surface">
+        <div className="mx-auto grid max-w-6xl gap-9 px-5 py-14 sm:px-8 sm:py-24 lg:grid-cols-2 lg:gap-16">
+          <div>
+            <p className="eyebrow" style={{ color: "var(--bal-red)" }}>
+              Das Prinzip
             </p>
+            <h2 className="mt-3 text-[2.05rem] sm:mt-4 sm:text-5xl">Ein Ultralauf mit Pausen.</h2>
+            <div className="mt-4 max-w-2xl space-y-3.5 text-base leading-[1.55] text-muted-foreground sm:mt-7 sm:space-y-5 sm:text-lg sm:leading-relaxed">
+              <p>Alle starten gemeinsam. Aber nicht alle kommen gleichzeitig zurück.</p>
+              <p>
+                Nach jeder Runde geht es zurück ins Buchenwaldstadion. Wer schneller läuft, hat bis
+                zum nächsten gemeinsamen Start mehr Zeit zum Essen, Erholen, Duschen, Reden oder
+                einfach zum Füßehochlegen.
+              </p>
+            </div>
+
+            <figure
+              className="mt-6 max-w-2xl border-l-4 pl-4 font-display text-lg leading-tight font-extrabold sm:mt-9 sm:pl-5 sm:text-2xl"
+              style={{ borderColor: "var(--bal-yellow)" }}
+            >
+              „Wer früher im Ziel ist, kann länger Pause machen.“
+            </figure>
           </div>
 
-          <figure
-            className="mt-6 max-w-2xl border-l-4 pl-4 font-display text-lg leading-tight font-extrabold sm:mt-9 sm:pl-5 sm:text-2xl"
-            style={{ borderColor: "var(--bal-yellow)" }}
-          >
-            „Wer früher im Ziel ist, kann länger Pause machen.“
-          </figure>
-
-          {/* Kompakte Flow-Infografik (kein Navigationselement) */}
-          <ol className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 sm:mt-12 sm:gap-x-3 sm:gap-y-3">
-            {["Start", "Laufen", "Ziel", "Pause", "Nächster Start"].map((step, i) => (
-              <li key={step} className="flex items-center gap-2 sm:gap-3">
-                <span className="eyebrow rounded-full border border-border bg-surface px-3 py-1.5 text-[0.68rem] text-foreground sm:px-4 sm:py-2.5 sm:text-xs">
-                  {step}
-                </span>
-                {i < 4 && <ArrowRight className="h-3.5 w-3.5 shrink-0 text-muted-foreground sm:h-4 sm:w-4" />}
+          {/* Minimalistische Ablaufgrafik – Typografie und Linien statt Pills */}
+          <ol className="relative">
+            {PRINCIPLE_STEPS.map((s, i) => (
+              <li key={s.label} className="relative pb-6 pl-6 last:pb-0 sm:pb-9 sm:pl-8">
+                <span
+                  aria-hidden
+                  className="absolute top-2 left-0 h-2.5 w-2.5 rounded-full"
+                  style={{ background: s.color }}
+                />
+                {i < PRINCIPLE_STEPS.length - 1 && (
+                  <span
+                    aria-hidden
+                    className="absolute top-5 bottom-0 left-[0.3rem] w-px bg-border"
+                  />
+                )}
+                <p
+                  className="font-display text-2xl leading-none font-extrabold sm:text-4xl"
+                  style={{ color: s.color }}
+                >
+                  {s.time}
+                </p>
+                <p className="eyebrow mt-2 text-foreground sm:mt-3">{s.label}</p>
               </li>
             ))}
           </ol>
@@ -183,62 +283,77 @@ function Index() {
       </section>
 
       {/* ---------- ABLAUF ---------- */}
-      <section id="ablauf" className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[1.85rem] sm:text-5xl">
+      <section id="ablauf" className="border-b border-border">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-24">
+          <h2 className="text-[2.05rem] sm:text-5xl">
             100 Kilometer.
             <br />
             Acht Starts.
             <br />
             20 Stunden.
           </h2>
-          <p className="mt-4 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-6 sm:text-lg sm:leading-relaxed">
+          <p className="mt-4 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-6 sm:text-lg sm:leading-relaxed">
             Das Hauptprogramm besteht aus acht fest terminierten Runden. Für jeweils fünf Kilometer
             steht eine Stunde zur Verfügung.
           </p>
 
           {/* Mobile: kompakte Rundenliste · Desktop: Kartenreihe */}
           <Reveal>
-            <ol className="mt-6 grid gap-2 sm:mt-10 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
+            <ol className="mt-6 grid gap-2.5 sm:mt-10 sm:grid-cols-2 sm:gap-3 lg:grid-cols-4">
               {ROUNDS.map((r) => (
                 <li
                   key={r.n}
-                  className="relative overflow-hidden rounded-xl border border-border bg-background py-3 pr-4 pl-5 transition-transform duration-300 hover:-translate-y-1 sm:p-5 sm:pl-6"
+                  className="relative flex items-center gap-3.5 overflow-hidden rounded-lg border-b border-border py-3 pl-4 sm:block sm:rounded-xl sm:border sm:bg-surface sm:p-5 sm:pl-6 sm:transition-transform sm:duration-300 sm:hover:-translate-y-1"
                 >
                   <span
                     aria-hidden
-                    className="absolute top-0 bottom-0 left-0 w-1.5"
+                    className="absolute top-0 bottom-0 left-0 w-1"
                     style={{ background: r.color }}
                   />
-                  <div className="flex items-baseline gap-2.5 sm:gap-3">
-                    <span
-                      className="font-display text-xl font-extrabold sm:text-3xl"
-                      style={{ color: r.color }}
-                    >
-                      {r.n}
-                    </span>
-                    <span className="font-display text-lg font-extrabold sm:text-2xl">{r.km}</span>
+                  <span
+                    className="font-display text-xl leading-none font-extrabold sm:hidden"
+                    style={{ color: r.color }}
+                  >
+                    {r.n}
+                  </span>
+                  <div className="min-w-0 sm:hidden">
+                    <p className="font-display text-lg leading-none font-extrabold">{r.km}</p>
+                    <p className="mt-1 text-sm text-muted-foreground">
+                      {r.day} · {r.time} · {r.window} Zeitfenster
+                    </p>
                   </div>
-                  <p className="mt-1 text-sm font-semibold sm:mt-3">{r.when}</p>
-                  <p className="mt-0.5 text-sm text-muted-foreground sm:mt-1">
-                    {r.window} Zeitfenster
-                  </p>
+
+                  {/* Desktop-Darstellung */}
+                  <div className="hidden sm:block">
+                    <div className="flex items-baseline gap-3">
+                      <span
+                        className="font-display text-3xl font-extrabold"
+                        style={{ color: r.color }}
+                      >
+                        {r.n}
+                      </span>
+                      <span className="font-display text-2xl font-extrabold">{r.km}</span>
+                    </div>
+                    <p className="mt-3 text-sm font-semibold">
+                      {r.day} · {r.time} Uhr
+                    </p>
+                    <p className="mt-1 text-sm text-muted-foreground">{r.window} Zeitfenster</p>
+                  </div>
                 </li>
               ))}
             </ol>
           </Reveal>
 
-
-          <p className="mt-6 text-sm font-semibold text-muted-foreground sm:mt-8">
+          <p className="mt-5 text-sm font-semibold text-muted-foreground sm:mt-8">
             Ende des Hauptprogramms: Sonntag gegen 04:00 Uhr.
           </p>
 
           <div
-            className="mt-8 rounded-2xl border border-border bg-background p-5 sm:mt-12 sm:p-10"
-            style={{ borderTop: "4px solid var(--bal-blue)" }}
+            className="mt-7 max-w-3xl border-l-4 pl-4 sm:mt-12 sm:pl-6"
+            style={{ borderColor: "var(--bal-blue)" }}
           >
             <h3 className="text-xl sm:text-3xl">Du musst nicht alle acht Runden laufen.</h3>
-            <p className="mt-3 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-4 sm:text-base sm:leading-relaxed">
+            <p className="mt-2.5 text-base leading-[1.55] text-muted-foreground sm:mt-4 sm:leading-relaxed">
               Einzelne Runden können ausgelassen werden. Du kannst die Veranstaltung nach deiner
               persönlichen Zieldistanz beenden. Wer bei einer weiteren Runde starten möchte, muss
               rechtzeitig zum gemeinsamen Start zurück im Buchenwaldstadion sein.
@@ -248,33 +363,44 @@ function Index() {
       </section>
 
       {/* ---------- VON 5 BIS 100 KM ---------- */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[1.85rem] sm:text-5xl">
+      <section className="border-b border-border" style={{ background: "var(--tint-yellow)" }}>
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-24">
+          <h2 className="text-[2.05rem] sm:text-5xl">
             5 Kilometer oder 100?
             <br />
             Beides gehört dazu.
           </h2>
           <Reveal className="mt-6 grid gap-3 sm:mt-10 sm:gap-4 lg:grid-cols-3">
             {[
-              { t: "Eine Runde", d: "Einfach Teil des Ballon-Ultralaufs sein.", c: "var(--bal-green)" },
+              {
+                t: "Eine Runde",
+                d: "Einfach Teil des Ballon-Ultralaufs sein.",
+                c: "var(--bal-green)",
+              },
               {
                 t: "Erster Ultra",
                 d: "Mehrere Runden kombinieren und die eigene Grenze verschieben.",
                 c: "var(--bal-orange)",
               },
-              { t: "100 KM", d: "Alle acht Starts. Das komplette Hauptprogramm.", c: "var(--bal-violet)" },
+              {
+                t: "100 KM",
+                d: "Alle acht Starts. Das komplette Hauptprogramm.",
+                c: "var(--bal-violet)",
+              },
             ].map((card) => (
-              <article key={card.t} className="rounded-2xl border border-border bg-surface p-5 sm:p-7">
+              <article
+                key={card.t}
+                className="rounded-2xl border border-border bg-surface p-4.5 sm:p-7"
+              >
                 <div className="balloon-rule max-w-[48px]" style={{ background: card.c }} />
-                <h3 className="mt-3.5 text-xl uppercase sm:mt-5 sm:text-2xl">{card.t}</h3>
-                <p className="mt-2 text-[0.975rem] leading-snug text-muted-foreground sm:mt-3 sm:text-base sm:leading-relaxed">
+                <h3 className="mt-3 text-xl uppercase sm:mt-5 sm:text-2xl">{card.t}</h3>
+                <p className="mt-2 text-base leading-[1.55] text-muted-foreground sm:mt-3 sm:leading-relaxed">
                   „{card.d}“
                 </p>
               </article>
             ))}
           </Reveal>
-          <p className="mt-6 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-8 sm:text-base sm:leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-8 sm:leading-relaxed">
             Der Ballon-Ultralauf verbindet unterschiedliche Leistungsniveaus in derselben
             Veranstaltung.
           </p>
@@ -283,8 +409,8 @@ function Index() {
 
       {/* ---------- STRECKEN ---------- */}
       <section id="strecken" className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[1.85rem] sm:text-5xl">
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-24">
+          <h2 className="text-[2.05rem] sm:text-5xl">
             Vier Strecken.
             <br />
             Acht Starts.
@@ -293,63 +419,79 @@ function Index() {
             {COURSES.map((c) => (
               <article
                 key={c.km}
-                className="relative overflow-hidden rounded-2xl border border-border bg-background p-5 pl-6 sm:p-7 sm:pl-8"
+                className="relative overflow-hidden rounded-2xl border border-border bg-background p-4.5 pl-5 sm:p-7 sm:pl-8"
               >
                 <span
                   aria-hidden
                   className="absolute top-0 bottom-0 left-0 w-1.5"
                   style={{ background: c.color }}
                 />
-                <p className="font-display text-2xl font-extrabold sm:text-3xl" style={{ color: c.color }}>
+                <p
+                  className="font-display text-2xl font-extrabold sm:text-3xl"
+                  style={{ color: c.color }}
+                >
                   {c.km}
                 </p>
                 <h3 className="mt-1.5 text-lg sm:mt-2 sm:text-xl">{c.title}</h3>
-                <p className="mt-2 text-[0.975rem] leading-snug text-muted-foreground sm:mt-3 sm:text-base sm:leading-relaxed">
+                <p className="mt-2 text-base leading-[1.55] text-muted-foreground sm:mt-3 sm:leading-relaxed">
                   {c.note}
                 </p>
               </article>
             ))}
           </Reveal>
-          <p className="mt-6 max-w-2xl border-l-4 pl-4 text-[0.975rem] leading-snug text-muted-foreground sm:mt-9 sm:pl-5 sm:text-base sm:leading-relaxed" style={{ borderColor: "var(--bal-teal)" }}>
+          <p
+            className="mt-6 max-w-2xl border-l-4 pl-4 text-base leading-[1.55] text-muted-foreground sm:mt-9 sm:pl-5 sm:leading-relaxed"
+            style={{ borderColor: "var(--bal-teal)" }}
+          >
             Die vier Strecken befinden sich derzeit in der finalen Befahrung, Vermessung und
             Abstimmung. Die endgültigen GPX-Dateien werden mit der Ausschreibung veröffentlicht.
           </p>
+
+          {/* Navigation – kompakte Infobox statt eigener Section */}
+          <div className="mt-6 rounded-2xl border border-border bg-background p-4.5 sm:mt-9 sm:p-6">
+            <p className="eyebrow" style={{ color: "var(--bal-blue)" }}>
+              Navigation
+            </p>
+            <p className="mt-2 text-base leading-[1.55] font-semibold sm:mt-3">
+              GPX + Streckenmarkierung + vorhandene Wegeschilder
+            </p>
+            <p className="mt-2 text-base leading-[1.55] text-muted-foreground">
+              Für die Nachtabschnitte ist eine Stirnlampe Pflicht.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ---------- 100 MEILEN ---------- */}
       <section className="border-b border-border bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-24">
+        <div className="mx-auto max-w-5xl px-5 py-14 sm:px-8 sm:py-24">
           <p className="eyebrow" style={{ color: "var(--bal-yellow)" }}>
             Die ganz große Herausforderung
           </p>
-          <h2 className="mt-3 text-[2.25rem] sm:mt-4 sm:text-6xl">100 Meilen.</h2>
-          <p className="mt-4 max-w-2xl text-[0.975rem] leading-snug opacity-80 sm:mt-6 sm:text-lg sm:leading-relaxed">
+          <h2 className="mt-3 text-[2.35rem] sm:mt-4 sm:text-6xl">100 Meilen.</h2>
+          <p className="mt-4 max-w-2xl text-base leading-[1.55] opacity-80 sm:mt-6 sm:text-lg sm:leading-relaxed">
             Für Freitagabend ist zusätzlich ein Prolog über rund 61 Kilometer geplant. Gemeinsam mit
             den 100 Kilometern des Hauptprogramms ergibt sich daraus die klassische
             100-Meilen-Distanz.
           </p>
 
-          <div className="mt-7 flex flex-col items-start gap-0.5 sm:mt-10 sm:flex-row sm:items-center sm:gap-5">
-            <span className="font-display text-xl font-extrabold sm:text-3xl">61 KM Prolog</span>
-            <span className="font-display text-lg opacity-60 sm:text-2xl">+</span>
-            <span className="font-display text-xl font-extrabold sm:text-3xl">100 KM Hauptprogramm</span>
-            <span className="font-display text-lg opacity-60 sm:text-2xl">=</span>
-            <span
+          <div className="mt-7 space-y-1.5 sm:mt-10 sm:space-y-2">
+            <p className="font-display text-xl font-extrabold sm:text-3xl">61 KM Prolog</p>
+            <p className="font-display text-xl font-extrabold sm:text-3xl">
+              <span className="opacity-60">+</span> 100 KM Hauptprogramm
+            </p>
+            <p
               className="font-display text-xl font-extrabold sm:text-3xl"
               style={{ color: "var(--bal-yellow)" }}
             >
-              100 Meilen
-            </span>
+              <span className="opacity-60">=</span> 100 Meilen
+            </p>
           </div>
 
-          <p className="mt-7 max-w-2xl text-[0.975rem] leading-snug opacity-80 sm:mt-10 sm:text-base sm:leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base leading-[1.55] opacity-80 sm:mt-10 sm:leading-relaxed">
             Der Prolog befindet sich noch in der separaten Strecken- und Behördenabstimmung.
           </p>
-          <p
-            className="eyebrow mt-5 inline-flex rounded-full px-4 py-2 sm:mt-6"
-            style={{ background: "var(--bal-violet)", color: "oklch(1 0 0)" }}
-          >
+          <p className="eyebrow mt-4 text-[0.68rem]" style={{ color: "var(--bal-violet)" }}>
             Vorbehaltlich Streckenfreigabe
           </p>
         </div>
@@ -357,32 +499,35 @@ function Index() {
 
       {/* ---------- BUCHENWALDSTADION ---------- */}
       <section id="welver" className="border-b border-border">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[1.85rem] sm:text-5xl">Unser Zuhause für ein langes Wochenende.</h2>
-          <p className="mt-4 font-display text-2xl font-extrabold sm:mt-5 sm:text-4xl" style={{ color: "var(--bal-green)" }}>
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-24">
+          <h2 className="text-[2.05rem] sm:text-5xl">Unser Zuhause für ein langes Wochenende.</h2>
+          <p
+            className="mt-4 font-display text-2xl font-extrabold sm:mt-5 sm:text-4xl"
+            style={{ color: "var(--bal-green)" }}
+          >
             Buchenwaldstadion Welver
           </p>
-          <p className="mt-4 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-6 sm:text-lg sm:leading-relaxed">
+          <p className="mt-4 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-6 sm:text-lg sm:leading-relaxed">
             Hier startet jede Runde. Hier endet jede Runde. Und hier spielt sich der Ballon-Ultralauf
             dazwischen ab.
           </p>
 
-          <div className="mt-6 grid grid-cols-1 gap-2 min-[380px]:grid-cols-2 sm:mt-10 sm:gap-3 lg:grid-cols-3">
-            {STADIUM_INFO.map(({ icon: Icon, label, sub }) => (
+          <div className="mt-6 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-3 lg:grid-cols-3">
+            {STADIUM_INFO.map(({ icon: Icon, label }) => (
               <div
                 key={label}
-                className="flex items-start gap-2.5 rounded-xl border border-border bg-surface p-3.5 sm:gap-3 sm:p-5"
+                className="flex h-full min-h-[4.5rem] flex-col justify-between gap-2 rounded-xl border border-border bg-surface p-3.5 sm:min-h-[5.5rem] sm:p-5"
               >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 sm:h-5 sm:w-5" style={{ color: "var(--bal-blue)" }} />
-                <div>
-                  <p className="eyebrow text-[0.68rem] text-foreground sm:text-xs">{label}</p>
-                  {sub && <p className="mt-0.5 text-xs text-muted-foreground sm:mt-1 sm:text-sm">{sub}</p>}
-                </div>
+                <Icon
+                  className="h-4 w-4 shrink-0 sm:h-5 sm:w-5"
+                  style={{ color: "var(--bal-blue)" }}
+                />
+                <p className="eyebrow text-[0.62rem] text-foreground sm:text-xs">{label}</p>
               </div>
             ))}
           </div>
 
-          <p className="mt-6 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-10 sm:text-base sm:leading-relaxed">
+          <p className="mt-6 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-10 sm:leading-relaxed">
             Das Buchenwaldstadion bildet das zentrale Basecamp der Veranstaltung. Nach jeder Runde
             kehren die Teilnehmenden hierher zurück.
           </p>
@@ -390,70 +535,22 @@ function Index() {
       </section>
 
       {/* ---------- MITTEN DURCH WELVER ---------- */}
-      <section className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[1.85rem] sm:text-5xl">Mitten durch Welver.</h2>
-          <div className="mt-4 max-w-2xl space-y-3.5 text-[0.975rem] leading-snug text-muted-foreground sm:mt-6 sm:space-y-5 sm:text-lg sm:leading-relaxed">
-            <p>
-              Die Strecken führen überwiegend über Geh-, Rad-, Feld- und Wirtschaftswege sowie
-              bestehende Wander- und Laufrouten.
-            </p>
-            <p>
-              Der öffentliche Raum bleibt dabei öffentlich. Nach aktuellem Planungsstand sind keine
-              flächendeckenden Straßensperrungen vorgesehen.
-            </p>
-          </div>
-
-          <p
-            className="mt-6 max-w-2xl border-l-4 pl-4 font-display text-lg leading-tight font-extrabold sm:mt-9 sm:pl-5 sm:text-2xl"
-            style={{ borderColor: "var(--bal-orange)" }}
-          >
-            „Rücksicht gehört genauso zum Lauf wie Laufschuhe und GPX.“
-          </p>
-
-          <ul className="mt-6 grid gap-2 sm:mt-9 sm:grid-cols-3 sm:gap-3">
-            {[
-              { t: "Öffentlicher Verkehr hat Vorrang.", c: "var(--bal-red)" },
-              { t: "Keine Sonderrechte für Teilnehmende.", c: "var(--bal-teal)" },
-              { t: "Möglichst verkehrsarme Streckenführung.", c: "var(--bal-green)" },
-            ].map((p) => (
-              <li key={p.t} className="rounded-xl border border-border bg-background p-4 sm:p-5">
-                <div className="balloon-rule max-w-[32px]" style={{ background: p.c }} />
-                <p className="mt-3 text-[0.975rem] leading-snug font-semibold sm:mt-4 sm:text-base">{p.t}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* ---------- ORIENTIERUNG UND NACHT ---------- */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-5xl px-5 py-11 sm:px-8 sm:py-20">
-          <h2 className="text-[1.85rem] sm:text-5xl">Damit du deine Runde findest.</h2>
-          <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 sm:mt-8 sm:gap-x-3 sm:gap-y-3">
-            {["GPX", "Streckenmarkierung", "Vorhandene Wegeschilder"].map((item, i) => (
-              <div key={item} className="flex items-center gap-2 sm:gap-3">
-                <span className="eyebrow rounded-full border border-border bg-surface px-3 py-1.5 text-[0.68rem] sm:px-4 sm:py-2.5 sm:text-xs">
-                  {item}
-                </span>
-                {i < 2 && <span className="font-display text-lg text-muted-foreground sm:text-xl">+</span>}
-              </div>
-            ))}
-          </div>
-          <p className="mt-5 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-8 sm:text-lg sm:leading-relaxed">
-            Die Navigation wird bewusst mehrfach abgesichert.
-          </p>
-          <p className="mt-3 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-4 sm:text-lg sm:leading-relaxed">
-            Für Dämmerung und Nacht gehören Stirnlampe, ausreichende Energiereserve und gut sichtbare
-            reflektierende Kleidung zur Pflichtausrüstung.
+      <section className="border-b border-border" style={{ background: "var(--tint-green)" }}>
+        <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-20">
+          <h2 className="text-[2.05rem] sm:text-5xl">Mitten durch Welver.</h2>
+          <p className="mt-4 max-w-2xl text-base leading-[1.55] text-muted-foreground sm:mt-6 sm:text-lg sm:leading-relaxed">
+            Die Strecken führen überwiegend über Geh-, Rad-, Feld- und Wirtschaftswege sowie
+            bestehende Wander- und Laufrouten. Dabei entdecken die Teilnehmenden Welver auf vier
+            unterschiedlich langen Runden.
           </p>
         </div>
       </section>
 
       {/* ---------- GESCHICHTE / COMEBACK ---------- */}
       <section id="geschichte" className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[1.85rem] sm:text-5xl">Von 2018 nach Welver.</h2>
+        <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8 sm:py-24">
+          <h2 className="text-[2.05rem] sm:text-5xl">Eine Geschichte, die weitergeht.</h2>
+          <p className="eyebrow mt-3 text-muted-foreground sm:mt-4">Von 2018 nach Welver</p>
 
           <Reveal className="mt-6 grid gap-6 sm:mt-10 sm:gap-10 lg:grid-cols-2 lg:items-start">
             <figure>
@@ -476,10 +573,13 @@ function Index() {
                     className="absolute top-2 -left-[1.65rem] h-3 w-3 rounded-full sm:-left-[1.9rem]"
                     style={{ background: h.color }}
                   />
-                  <p className="font-display text-xl font-extrabold sm:text-2xl" style={{ color: h.color }}>
+                  <p
+                    className="font-display text-xl font-extrabold sm:text-2xl"
+                    style={{ color: h.color }}
+                  >
                     {h.year}
                   </p>
-                  <p className="mt-0.5 text-[0.975rem] leading-snug text-muted-foreground sm:mt-1 sm:text-base sm:leading-relaxed">
+                  <p className="mt-0.5 text-base leading-[1.55] text-muted-foreground sm:mt-1 sm:leading-relaxed">
                     „{h.text}“
                   </p>
                 </li>
@@ -487,7 +587,7 @@ function Index() {
             </ol>
           </Reveal>
 
-          <p className="mt-7 max-w-3xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-12 sm:text-lg sm:leading-relaxed">
+          <p className="mt-7 max-w-3xl text-base leading-[1.55] text-muted-foreground sm:mt-12 sm:text-lg sm:leading-relaxed">
             Aus einem kleinen Lauf unter Freunden entwickelte sich ein Community-Format mit
             Teilnehmenden aus der Region und darüber hinaus. 2027 kehrt der Ballon-Ultralauf zurück –
             mit der ursprünglichen Idee, aber an einem neuen Standort.
@@ -497,17 +597,17 @@ function Index() {
 
       {/* ---------- AKTUELLER STAND ---------- */}
       <section id="stand" className="border-b border-border">
-        <div className="mx-auto max-w-3xl px-5 py-11 sm:px-8 sm:py-20">
+        <div className="mx-auto max-w-3xl px-5 py-12 sm:px-8 sm:py-20">
           <p className="eyebrow" style={{ color: "var(--bal-blue)" }}>
             Aktueller Stand
           </p>
           <h2 className="mt-3 text-2xl sm:mt-4 sm:text-4xl">Die Vorbereitungen laufen.</h2>
-          <p className="mt-4 text-[0.975rem] leading-snug text-muted-foreground sm:mt-5 sm:text-base sm:leading-relaxed">
+          <p className="mt-4 text-base leading-[1.55] text-muted-foreground sm:mt-5 sm:leading-relaxed">
             Aktuell befindet sich der Ballon-Ultralauf in Abstimmung mit den zuständigen Behörden.
             Grundkonzept, Veranstaltungsstandort und die Streckenkorridore stehen bereits. Die
             Detailplanung und notwendigen Freigaben werden derzeit vorbereitet.
           </p>
-          <p className="mt-4 text-[0.975rem] font-semibold sm:mt-5 sm:text-base">
+          <p className="mt-4 text-base font-semibold sm:mt-5">
             Die Anmeldung öffnet nach Abschluss der behördlichen Abstimmung.
           </p>
           <p className="eyebrow mt-5 inline-flex rounded-full border border-border bg-secondary px-4 py-2 text-muted-foreground sm:mt-6">
@@ -517,29 +617,34 @@ function Index() {
       </section>
 
       {/* ---------- ABSCHLUSS-CTA ---------- */}
-      <section className="bg-surface">
-        <div className="mx-auto max-w-5xl px-5 py-12 text-center sm:px-8 sm:py-24">
+      <section className="relative overflow-hidden bg-surface">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-[0.08] sm:h-96 sm:w-96"
+          style={{ background: "var(--bal-pink)" }}
+        />
+        <div className="relative mx-auto max-w-5xl px-5 py-14 text-center sm:px-8 sm:py-24">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
             loading="lazy"
-            className="mx-auto w-full max-w-[260px] object-contain sm:max-w-[440px]"
+            className="mx-auto w-full max-w-[280px] object-contain sm:max-w-[460px]"
           />
           <div className="mt-6 space-y-1 sm:mt-9 sm:space-y-1.5">
             <p className="eyebrow">Ballon-Ultralauf Welver</p>
             <p className="eyebrow text-muted-foreground">2.–4. Juli 2027</p>
             <p className="eyebrow text-muted-foreground">Buchenwaldstadion Welver</p>
           </div>
-          <div className="balloon-rule mx-auto mt-6 max-w-[100px] sm:mt-9 sm:max-w-[120px]" />
+          <div className="balloon-rule mx-auto mt-6 max-w-[120px] sm:mt-9 sm:max-w-[150px]" />
           <p className="mx-auto mt-5 max-w-2xl font-display text-xl leading-tight font-extrabold sm:mt-8 sm:text-4xl">
             „Wer früher im Ziel ist,
             <br />
             kann länger Pause machen.“
           </p>
-          <p className="mt-6 text-[0.975rem] font-semibold sm:mt-8 sm:text-base">
+          <p className="mt-6 text-base font-semibold sm:mt-8">
             Die Anmeldung öffnet nach Abschluss der behördlichen Abstimmung.
           </p>
-          <p className="mx-auto mt-2.5 max-w-xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-3 sm:text-base sm:leading-relaxed">
+          <p className="mx-auto mt-2.5 max-w-xl text-base leading-[1.55] text-muted-foreground sm:mt-3 sm:leading-relaxed">
             Bis dahin findest du hier nach und nach alle Neuigkeiten zur Veranstaltung.
           </p>
         </div>
@@ -547,7 +652,6 @@ function Index() {
 
       {/* ---------- FOOTER ---------- */}
       <Footer />
-
     </div>
   );
 }
