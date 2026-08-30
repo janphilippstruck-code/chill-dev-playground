@@ -392,7 +392,7 @@ function Index() {
       {/* ---------- MITTEN DURCH WELVER ---------- */}
       <section className="border-b border-border bg-surface">
         <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[2rem] sm:text-5xl">Mitten durch Welver.</h2>
+          <h2 className="text-[1.85rem] sm:text-5xl">Mitten durch Welver.</h2>
           <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
             <p>
               Die Strecken führen überwiegend über Geh-, Rad-, Feld- und Wirtschaftswege sowie
@@ -429,7 +429,7 @@ function Index() {
       {/* ---------- ORIENTIERUNG UND NACHT ---------- */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-5xl px-5 py-11 sm:px-8 sm:py-20">
-          <h2 className="text-[2rem] sm:text-5xl">Damit du deine Runde findest.</h2>
+          <h2 className="text-[1.85rem] sm:text-5xl">Damit du deine Runde findest.</h2>
           <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
             {["GPX", "Streckenmarkierung", "Vorhandene Wegeschilder"].map((item, i) => (
               <div key={item} className="flex items-center gap-3">
@@ -453,7 +453,7 @@ function Index() {
       {/* ---------- GESCHICHTE / COMEBACK ---------- */}
       <section id="geschichte" className="border-b border-border bg-surface">
         <div className="mx-auto max-w-6xl px-5 py-12 sm:px-8 sm:py-24">
-          <h2 className="text-[2rem] sm:text-5xl">Von 2018 nach Welver.</h2>
+          <h2 className="text-[1.85rem] sm:text-5xl">Von 2018 nach Welver.</h2>
 
           <Reveal className="mt-10 grid gap-10 lg:grid-cols-2 lg:items-start">
             <figure>
