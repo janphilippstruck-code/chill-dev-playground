@@ -50,6 +50,9 @@
   --color-ring-offset-background: var(--background);
   --color-ink: var(--ink);
   --color-surface: var(--surface);
+  --color-tint-teal: var(--tint-teal);
+  --color-tint-yellow: var(--tint-yellow);
+  --color-tint-green: var(--tint-green);
   --color-bal-red: var(--bal-red);
   --color-bal-orange: var(--bal-orange);
   --color-bal-yellow: var(--bal-yellow);
