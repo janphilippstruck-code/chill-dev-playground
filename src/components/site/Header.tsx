@@ -16,12 +16,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-2 sm:px-8 sm:py-3">
         <Link to="/" className="flex shrink-0 items-center" aria-label="Ballon-Ultralauf Welver">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-            className="h-9 w-auto max-w-[190px] object-contain sm:h-11 sm:max-w-none"
+            className="h-12 w-auto max-w-[210px] object-contain sm:h-12 sm:max-w-none"
           />
         </Link>
 

@@ -393,7 +393,7 @@ function Index() {
       <section className="border-b border-border bg-surface">
         <div className="mx-auto max-w-5xl px-5 py-12 sm:px-8 sm:py-24">
           <h2 className="text-[1.85rem] sm:text-5xl">Mitten durch Welver.</h2>
-          <div className="mt-6 max-w-2xl space-y-5 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <div className="mt-4 max-w-2xl space-y-3.5 text-[0.975rem] leading-snug text-muted-foreground sm:mt-6 sm:space-y-5 sm:text-lg sm:leading-relaxed">
             <p>
               Die Strecken führen überwiegend über Geh-, Rad-, Feld- und Wirtschaftswege sowie
               bestehende Wander- und Laufrouten.
@@ -405,21 +405,21 @@ function Index() {
           </div>
 
           <p
-            className="mt-9 max-w-2xl border-l-4 pl-5 font-display text-xl leading-tight font-extrabold sm:text-2xl"
+            className="mt-6 max-w-2xl border-l-4 pl-4 font-display text-lg leading-tight font-extrabold sm:mt-9 sm:pl-5 sm:text-2xl"
             style={{ borderColor: "var(--bal-orange)" }}
           >
             „Rücksicht gehört genauso zum Lauf wie Laufschuhe und GPX.“
           </p>
 
-          <ul className="mt-9 grid gap-3 sm:grid-cols-3">
+          <ul className="mt-6 grid gap-2 sm:mt-9 sm:grid-cols-3 sm:gap-3">
             {[
               { t: "Öffentlicher Verkehr hat Vorrang.", c: "var(--bal-red)" },
               { t: "Keine Sonderrechte für Teilnehmende.", c: "var(--bal-teal)" },
               { t: "Möglichst verkehrsarme Streckenführung.", c: "var(--bal-green)" },
             ].map((p) => (
-              <li key={p.t} className="rounded-xl border border-border bg-background p-5">
+              <li key={p.t} className="rounded-xl border border-border bg-background p-4 sm:p-5">
                 <div className="balloon-rule max-w-[32px]" style={{ background: p.c }} />
-                <p className="mt-4 text-base font-semibold">{p.t}</p>
+                <p className="mt-3 text-[0.975rem] leading-snug font-semibold sm:mt-4 sm:text-base">{p.t}</p>
               </li>
             ))}
           </ul>
@@ -430,20 +430,20 @@ function Index() {
       <section className="border-b border-border">
         <div className="mx-auto max-w-5xl px-5 py-11 sm:px-8 sm:py-20">
           <h2 className="text-[1.85rem] sm:text-5xl">Damit du deine Runde findest.</h2>
-          <div className="mt-8 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+          <div className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 sm:mt-8 sm:gap-x-3 sm:gap-y-3">
             {["GPX", "Streckenmarkierung", "Vorhandene Wegeschilder"].map((item, i) => (
-              <div key={item} className="flex items-center gap-3">
-                <span className="eyebrow rounded-full border border-border bg-surface px-4 py-2.5">
+              <div key={item} className="flex items-center gap-2 sm:gap-3">
+                <span className="eyebrow rounded-full border border-border bg-surface px-3 py-1.5 text-[0.68rem] sm:px-4 sm:py-2.5 sm:text-xs">
                   {item}
                 </span>
-                {i < 2 && <span className="font-display text-xl text-muted-foreground">+</span>}
+                {i < 2 && <span className="font-display text-lg text-muted-foreground sm:text-xl">+</span>}
               </div>
             ))}
           </div>
-          <p className="mt-8 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-5 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-8 sm:text-lg sm:leading-relaxed">
             Die Navigation wird bewusst mehrfach abgesichert.
           </p>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-3 max-w-2xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-4 sm:text-lg sm:leading-relaxed">
             Für Dämmerung und Nacht gehören Stirnlampe, ausreichende Energiereserve und gut sichtbare
             reflektierende Kleidung zur Pflichtausrüstung.
           </p>
