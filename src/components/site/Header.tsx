@@ -15,15 +15,16 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-2 sm:px-8 sm:py-3">
+    <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-1.5 sm:px-8 sm:py-2">
         <Link to="/" className="flex shrink-0 items-center" aria-label="Ballon-Ultralauf Welver">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-            className="h-12 w-auto max-w-[210px] object-contain sm:h-12 sm:max-w-none"
+            className="h-14 w-auto max-w-[140px] object-contain sm:h-16 sm:max-w-none"
           />
         </Link>
+
 
         <nav className="hidden items-center gap-7 lg:flex">
           {NAV.map((item) => (
