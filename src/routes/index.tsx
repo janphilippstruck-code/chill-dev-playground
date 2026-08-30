@@ -499,16 +499,16 @@ function Index() {
           <p className="eyebrow" style={{ color: "var(--bal-blue)" }}>
             Aktueller Stand
           </p>
-          <h2 className="mt-4 text-2xl sm:text-4xl">Die Vorbereitungen laufen.</h2>
-          <p className="mt-5 text-base leading-relaxed text-muted-foreground">
+          <h2 className="mt-3 text-2xl sm:mt-4 sm:text-4xl">Die Vorbereitungen laufen.</h2>
+          <p className="mt-4 text-[0.975rem] leading-snug text-muted-foreground sm:mt-5 sm:text-base sm:leading-relaxed">
             Aktuell befindet sich der Ballon-Ultralauf in Abstimmung mit den zuständigen Behörden.
             Grundkonzept, Veranstaltungsstandort und die Streckenkorridore stehen bereits. Die
             Detailplanung und notwendigen Freigaben werden derzeit vorbereitet.
           </p>
-          <p className="mt-5 text-base font-semibold">
+          <p className="mt-4 text-[0.975rem] font-semibold sm:mt-5 sm:text-base">
             Die Anmeldung öffnet nach Abschluss der behördlichen Abstimmung.
           </p>
-          <p className="eyebrow mt-6 inline-flex rounded-full border border-border bg-secondary px-4 py-2 text-muted-foreground">
+          <p className="eyebrow mt-5 inline-flex rounded-full border border-border bg-secondary px-4 py-2 text-muted-foreground sm:mt-6">
             Updates folgen
           </p>
         </div>
@@ -520,23 +520,24 @@ function Index() {
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-            className="mx-auto w-full max-w-[440px] object-contain"
+            loading="lazy"
+            className="mx-auto w-full max-w-[260px] object-contain sm:max-w-[440px]"
           />
-          <div className="mt-9 space-y-1.5">
+          <div className="mt-6 space-y-1 sm:mt-9 sm:space-y-1.5">
             <p className="eyebrow">Ballon-Ultralauf Welver</p>
             <p className="eyebrow text-muted-foreground">2.–4. Juli 2027</p>
             <p className="eyebrow text-muted-foreground">Buchenwaldstadion Welver</p>
           </div>
-          <div className="balloon-rule mx-auto mt-9 max-w-[120px]" />
-          <p className="mx-auto mt-8 max-w-2xl font-display text-2xl leading-tight font-extrabold sm:text-4xl">
+          <div className="balloon-rule mx-auto mt-6 max-w-[100px] sm:mt-9 sm:max-w-[120px]" />
+          <p className="mx-auto mt-5 max-w-2xl font-display text-xl leading-tight font-extrabold sm:mt-8 sm:text-4xl">
             „Wer früher im Ziel ist,
             <br />
             kann länger Pause machen.“
           </p>
-          <p className="mt-8 text-base font-semibold">
+          <p className="mt-6 text-[0.975rem] font-semibold sm:mt-8 sm:text-base">
             Die Anmeldung öffnet nach Abschluss der behördlichen Abstimmung.
           </p>
-          <p className="mx-auto mt-3 max-w-xl text-base leading-relaxed text-muted-foreground">
+          <p className="mx-auto mt-2.5 max-w-xl text-[0.975rem] leading-snug text-muted-foreground sm:mt-3 sm:text-base sm:leading-relaxed">
             Bis dahin findest du hier nach und nach alle Neuigkeiten zur Veranstaltung.
           </p>
         </div>
