@@ -670,17 +670,12 @@ function Index() {
 
       {/* ---------- ABSCHLUSS-CTA ---------- */}
       <section className="relative overflow-hidden bg-surface">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-[0.08] sm:h-96 sm:w-96"
-          style={{ background: "var(--bal-pink)" }}
-        />
         <div className="relative mx-auto max-w-5xl px-5 py-14 text-center sm:px-8 sm:py-24">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
             loading="lazy"
-            className="mx-auto w-full max-w-[280px] object-contain mix-blend-multiply sm:max-w-[460px]"
+            className="mx-auto w-full max-w-[280px] object-contain sm:max-w-[460px]"
           />
           <div className="mt-6 space-y-1 sm:mt-9 sm:space-y-1.5">
             <p className="eyebrow">Ballon-Ultralauf Welver</p>
