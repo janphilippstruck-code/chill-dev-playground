@@ -20,6 +20,12 @@ export const Route = createFileRoute("/datenschutz")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://ballonultralauf.xn--ballonlufer-r8a.de/datenschutz",
+      },
+    ],
   }),
   component: Datenschutz,
 });
@@ -81,10 +87,9 @@ function Datenschutz() {
         <section className="mt-10">
           <h2 className="text-xl">Schriftarten</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            Zur Darstellung der Typografie werden Schriftdateien von Google Fonts geladen. Dabei
-            wird die IP-Adresse des aufrufenden Geräts an den Anbieter Google übertragen. Rechtliche
-            Grundlage ist das berechtigte Interesse an einer einheitlichen Darstellung der Website
-            (Art. 6 Abs. 1 lit. f DSGVO).
+            Die auf dieser Website verwendeten Schriftarten werden lokal innerhalb des
+            Websiteprojekts bereitgestellt. Beim Laden der Schriftarten wird keine Verbindung zu
+            Google Fonts oder anderen externen Schriftservern hergestellt.
           </p>
         </section>
 

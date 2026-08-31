@@ -1,14 +1,10 @@
-# Master Prompt Guide (47)
+# Ballon-Ultralauf Welver 2027
 
-Der Auftrag steht im Master prompt
-
-
-
-Bitte exakt daran halten
+Website zum Ballon-Ultralauf Welver, 2.–4. Juli 2027, Buchenwaldstadion Welver.
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://chill-dev-playground.lovable.app
+**Live**: https://ballonultralauf.xn--ballonlufer-r8a.de/ (sichtbar: https://ballonultralauf.ballonläufer.de/)
 
 ## Build with Lovable
 
