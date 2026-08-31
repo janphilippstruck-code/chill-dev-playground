@@ -21,7 +21,7 @@ export function Header() {
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-            className="h-[62px] w-auto max-w-[170px] object-contain sm:h-[72px] sm:max-w-none"
+            className="h-[74px] w-auto max-w-[190px] object-contain sm:h-[86px] sm:max-w-none"
           />
         </Link>
 
