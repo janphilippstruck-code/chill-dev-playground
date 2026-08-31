@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo-ballon-ultralauf.png.asset.json";
+import logo from "@/assets/logo-ballon-ultralauf-original.png.asset.json";
 
 const NAV = [
   { label: "Konzept", href: "#konzept" },
@@ -16,17 +16,17 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-1.5 sm:px-8 sm:py-2">
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-5 py-2 sm:px-8 sm:py-2.5">
         <Link to="/" className="flex shrink-0 items-center" aria-label="Ballon-Ultralauf Welver">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-            className="h-14 w-auto max-w-[140px] object-contain sm:h-16 sm:max-w-none"
+            className="h-[62px] w-auto max-w-[170px] object-contain sm:h-[72px] sm:max-w-none"
           />
         </Link>
 
 
-        <nav className="hidden items-center gap-5 lg:flex xl:gap-6">
+        <nav className="hidden items-center gap-4 lg:flex xl:gap-6">
           {NAV.map((item) => (
             <Link
               key={item.href}
