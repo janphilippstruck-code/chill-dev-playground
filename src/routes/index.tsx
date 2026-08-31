@@ -11,7 +11,7 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import logo from "@/assets/logo-ballon-ultralauf.png.asset.json";
+import logo from "@/assets/logo-ballon-ultralauf-original.png.asset.json";
 import historie from "@/assets/historie-ballon-ultralauf.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -94,12 +94,85 @@ const STADIUM_INFO = [
   { icon: ShowerHead, label: "Toiletten / Duschen" },
 ];
 
-const PRINCIPLE_STEPS = [
-  { time: "08:00", label: "Gemeinsamer Start", color: "var(--bal-red)" },
-  { time: "Runde", label: "Laufen auf einer der vier Strecken", color: "var(--bal-teal)" },
-  { time: "Ziel", label: "Zurück im Basecamp", color: "var(--bal-green)" },
-  { time: "Pause", label: "Bis zum nächsten gemeinsamen Start", color: "var(--bal-yellow)" },
-];
+/**
+ * Editoriale Infografik: fester Start links, fester nächster Start rechts,
+ * variabler Zielpunkt dazwischen. Links Lauf, rechts Pause.
+ */
+function PrincipleDiagram() {
+  return (
+    <div className="w-full">
+      {/* Kopfzeile: die beiden festen Startzeiten */}
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p
+            className="font-display text-3xl leading-none font-extrabold sm:text-4xl"
+            style={{ color: "var(--bal-red)" }}
+          >
+            08:00
+          </p>
+          <p className="eyebrow mt-1.5 text-muted-foreground">Gemeinsamer Start</p>
+        </div>
+        <div className="text-right">
+          <p
+            className="font-display text-3xl leading-none font-extrabold sm:text-4xl"
+            style={{ color: "var(--bal-blue)" }}
+          >
+            12:00
+          </p>
+          <p className="eyebrow mt-1.5 text-muted-foreground">Nächster Start</p>
+        </div>
+      </div>
+
+      {/* Achse mit variablem Zielpunkt */}
+      <div className="relative mt-6 h-px w-full bg-border sm:mt-8">
+        <span
+          aria-hidden
+          className="absolute top-1/2 left-0 h-6 w-[3px] -translate-y-1/2"
+          style={{ background: "var(--bal-red)" }}
+        />
+        <span
+          aria-hidden
+          className="absolute top-1/2 right-0 h-6 w-[3px] -translate-y-1/2"
+          style={{ background: "var(--bal-blue)" }}
+        />
+        {/* Laufabschnitt bis zum Ziel */}
+        <span
+          aria-hidden
+          className="absolute top-1/2 left-0 h-[3px] w-[58%] -translate-y-1/2"
+          style={{ background: "var(--bal-teal)" }}
+        />
+        {/* Zielpunkt */}
+        <span
+          aria-hidden
+          className="absolute top-1/2 left-[58%] h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-surface"
+          style={{ background: "var(--bal-green)" }}
+        />
+      </div>
+
+      {/* Beschriftung der beiden Abschnitte */}
+      <div className="mt-3 flex w-full items-start">
+        <div className="w-[58%] pr-3">
+          <p className="eyebrow" style={{ color: "var(--bal-teal)" }}>
+            Runde
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">Individuelle Laufzeit</p>
+        </div>
+        <div className="w-[42%] pl-3 text-right">
+          <p className="eyebrow" style={{ color: "var(--bal-green)" }}>
+            Pause
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">Ziel bis nächster Start</p>
+        </div>
+      </div>
+
+      <p className="mt-6 max-w-md font-display text-base leading-snug font-extrabold sm:mt-8 sm:text-xl">
+        Wann du ins Ziel kommst, ist individuell.
+        <br />
+        Wann die nächste Runde startet, nicht.
+      </p>
+    </div>
+  );
+}
 
 function Index() {
   return (
@@ -115,11 +188,11 @@ function Index() {
             style={{ background: "var(--bal-teal)" }}
           />
           <div
-            className="absolute top-24 right-24 h-40 w-40 rounded-full opacity-[0.10] sm:top-40 sm:right-56 sm:h-64 sm:w-64"
+            className="absolute top-40 right-56 hidden h-64 w-64 rounded-full opacity-[0.10] sm:block"
             style={{ background: "var(--bal-yellow)" }}
           />
           <div
-            className="absolute -bottom-28 -left-20 h-56 w-56 rounded-full opacity-[0.07] sm:h-80 sm:w-80"
+            className="absolute -bottom-28 -left-20 hidden h-80 w-80 rounded-full opacity-[0.07] sm:block"
             style={{ background: "var(--bal-violet)" }}
           />
           <div
@@ -134,7 +207,7 @@ function Index() {
             <img
               src={logo.url}
               alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-              className="w-full max-w-[320px] object-contain mix-blend-multiply sm:max-w-[620px]"
+              className="w-full max-w-[320px] object-contain sm:max-w-[620px]"
             />
 
             <p className="eyebrow mt-4 text-muted-foreground sm:mt-8">
@@ -254,31 +327,10 @@ function Index() {
             </figure>
           </div>
 
-          {/* Minimalistische Ablaufgrafik – Typografie und Linien statt Pills */}
-          <ol className="relative">
-            {PRINCIPLE_STEPS.map((s, i) => (
-              <li key={s.label} className="relative pb-6 pl-6 last:pb-0 sm:pb-9 sm:pl-8">
-                <span
-                  aria-hidden
-                  className="absolute top-2 left-0 h-2.5 w-2.5 rounded-full"
-                  style={{ background: s.color }}
-                />
-                {i < PRINCIPLE_STEPS.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="absolute top-5 bottom-0 left-[0.3rem] w-px bg-border"
-                  />
-                )}
-                <p
-                  className="font-display text-2xl leading-none font-extrabold sm:text-4xl"
-                  style={{ color: s.color }}
-                >
-                  {s.time}
-                </p>
-                <p className="eyebrow mt-2 text-foreground sm:mt-3">{s.label}</p>
-              </li>
-            ))}
-          </ol>
+          {/* Infografik: fester Start – variabler Zielpunkt – fester nächster Start */}
+          <div className="lg:self-center">
+            <PrincipleDiagram />
+          </div>
         </div>
       </section>
 
@@ -618,17 +670,12 @@ function Index() {
 
       {/* ---------- ABSCHLUSS-CTA ---------- */}
       <section className="relative overflow-hidden bg-surface">
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full opacity-[0.08] sm:h-96 sm:w-96"
-          style={{ background: "var(--bal-pink)" }}
-        />
         <div className="relative mx-auto max-w-5xl px-5 py-14 text-center sm:px-8 sm:py-24">
           <img
             src={logo.url}
             alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
             loading="lazy"
-            className="mx-auto w-full max-w-[280px] object-contain mix-blend-multiply sm:max-w-[460px]"
+            className="mx-auto w-full max-w-[280px] object-contain sm:max-w-[460px]"
           />
           <div className="mt-6 space-y-1 sm:mt-9 sm:space-y-1.5">
             <p className="eyebrow">Ballon-Ultralauf Welver</p>
