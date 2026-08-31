@@ -11,7 +11,7 @@ import {
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import logo from "@/assets/logo-ballon-ultralauf.png.asset.json";
+import logo from "@/assets/logo-ballon-ultralauf-original.png.asset.json";
 import historie from "@/assets/historie-ballon-ultralauf.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -94,12 +94,85 @@ const STADIUM_INFO = [
   { icon: ShowerHead, label: "Toiletten / Duschen" },
 ];
 
-const PRINCIPLE_STEPS = [
-  { time: "08:00", label: "Gemeinsamer Start", color: "var(--bal-red)" },
-  { time: "Runde", label: "Laufen auf einer der vier Strecken", color: "var(--bal-teal)" },
-  { time: "Ziel", label: "Zurück im Basecamp", color: "var(--bal-green)" },
-  { time: "Pause", label: "Bis zum nächsten gemeinsamen Start", color: "var(--bal-yellow)" },
-];
+/**
+ * Editoriale Infografik: fester Start links, fester nächster Start rechts,
+ * variabler Zielpunkt dazwischen. Links Lauf, rechts Pause.
+ */
+function PrincipleDiagram() {
+  return (
+    <div className="w-full">
+      {/* Kopfzeile: die beiden festen Startzeiten */}
+      <div className="flex items-start justify-between gap-3">
+        <div>
+          <p
+            className="font-display text-3xl leading-none font-extrabold sm:text-4xl"
+            style={{ color: "var(--bal-red)" }}
+          >
+            08:00
+          </p>
+          <p className="eyebrow mt-1.5 text-muted-foreground">Gemeinsamer Start</p>
+        </div>
+        <div className="text-right">
+          <p
+            className="font-display text-3xl leading-none font-extrabold sm:text-4xl"
+            style={{ color: "var(--bal-blue)" }}
+          >
+            12:00
+          </p>
+          <p className="eyebrow mt-1.5 text-muted-foreground">Nächster Start</p>
+        </div>
+      </div>
+
+      {/* Achse mit variablem Zielpunkt */}
+      <div className="relative mt-6 h-px w-full bg-border sm:mt-8">
+        <span
+          aria-hidden
+          className="absolute top-1/2 left-0 h-6 w-[3px] -translate-y-1/2"
+          style={{ background: "var(--bal-red)" }}
+        />
+        <span
+          aria-hidden
+          className="absolute top-1/2 right-0 h-6 w-[3px] -translate-y-1/2"
+          style={{ background: "var(--bal-blue)" }}
+        />
+        {/* Laufabschnitt bis zum Ziel */}
+        <span
+          aria-hidden
+          className="absolute top-1/2 left-0 h-[3px] w-[58%] -translate-y-1/2"
+          style={{ background: "var(--bal-teal)" }}
+        />
+        {/* Zielpunkt */}
+        <span
+          aria-hidden
+          className="absolute top-1/2 left-[58%] h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full ring-4 ring-surface"
+          style={{ background: "var(--bal-green)" }}
+        />
+      </div>
+
+      {/* Beschriftung der beiden Abschnitte */}
+      <div className="mt-3 flex w-full items-start">
+        <div className="w-[58%] pr-3">
+          <p className="eyebrow" style={{ color: "var(--bal-teal)" }}>
+            Runde
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">Individuelle Laufzeit</p>
+        </div>
+        <div className="w-[42%] pl-3 text-right">
+          <p className="eyebrow" style={{ color: "var(--bal-green)" }}>
+            Pause
+          </p>
+          <p className="mt-1 text-sm text-muted-foreground">Ziel bis nächster Start</p>
+        </div>
+      </div>
+
+      <p className="mt-6 max-w-md font-display text-base leading-snug font-extrabold sm:mt-8 sm:text-xl">
+        Wann du ins Ziel kommst, ist individuell.
+        <br />
+        Wann die nächste Runde startet, nicht.
+      </p>
+    </div>
+  );
+}
 
 function Index() {
   return (
