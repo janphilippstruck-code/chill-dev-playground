@@ -20,6 +20,12 @@ export const Route = createFileRoute("/datenschutz")({
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://ballonultralauf.xn--ballonlufer-r8a.de/datenschutz",
+      },
+    ],
   }),
   component: Datenschutz,
 });

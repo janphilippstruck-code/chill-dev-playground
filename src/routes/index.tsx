@@ -14,6 +14,27 @@ import { Reveal } from "@/components/site/Reveal";
 import logo from "@/assets/logo-ballon-ultralauf-original.png.asset.json";
 import historie from "@/assets/historie-ballon-ultralauf.jpeg.asset.json";
 
+const SITE_URL = "https://ballonultralauf.xn--ballonlufer-r8a.de";
+const OG_IMAGE = `${SITE_URL}/social/ballon-ultralauf-og.jpg`;
+
+const EVENT_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "Event",
+  name: "Ballon-Ultralauf Welver 2027",
+  startDate: "2027-07-02",
+  endDate: "2027-07-04",
+  eventStatus: "https://schema.org/EventScheduled",
+  eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+  location: {
+    "@type": "Place",
+    name: "Buchenwaldstadion Welver",
+  },
+  url: `${SITE_URL}/`,
+  image: [OG_IMAGE],
+  description:
+    "Der Ballon-Ultralauf kehrt zurück. Acht gemeinsame Starts, vier Strecken und bis zu 100 Kilometer im Buchenwaldstadion Welver.",
+};
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
@@ -28,6 +49,20 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content:
           "Wer früher im Ziel ist, kann länger Pause machen. Der Ballon-Ultralauf kehrt 2027 in Welver zurück.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Ballon-Ultralauf Welver" },
+      { property: "og:locale", content: "de_DE" },
+      { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: OG_IMAGE },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: OG_IMAGE },
+    ],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(EVENT_JSONLD),
       },
     ],
   }),
