@@ -188,11 +188,11 @@ function Index() {
             style={{ background: "var(--bal-teal)" }}
           />
           <div
-            className="absolute top-24 right-24 h-40 w-40 rounded-full opacity-[0.10] sm:top-40 sm:right-56 sm:h-64 sm:w-64"
+            className="absolute top-40 right-56 hidden h-64 w-64 rounded-full opacity-[0.10] sm:block"
             style={{ background: "var(--bal-yellow)" }}
           />
           <div
-            className="absolute -bottom-28 -left-20 h-56 w-56 rounded-full opacity-[0.07] sm:h-80 sm:w-80"
+            className="absolute -bottom-28 -left-20 hidden h-80 w-80 rounded-full opacity-[0.07] sm:block"
             style={{ background: "var(--bal-violet)" }}
           />
           <div
@@ -207,7 +207,7 @@ function Index() {
             <img
               src={logo.url}
               alt="Ballon-Ultralauf Welver – Veranstaltungslogo"
-              className="w-full max-w-[320px] object-contain mix-blend-multiply sm:max-w-[620px]"
+              className="w-full max-w-[320px] object-contain sm:max-w-[620px]"
             />
 
             <p className="eyebrow mt-4 text-muted-foreground sm:mt-8">
@@ -327,31 +327,10 @@ function Index() {
             </figure>
           </div>
 
-          {/* Minimalistische Ablaufgrafik – Typografie und Linien statt Pills */}
-          <ol className="relative">
-            {PRINCIPLE_STEPS.map((s, i) => (
-              <li key={s.label} className="relative pb-6 pl-6 last:pb-0 sm:pb-9 sm:pl-8">
-                <span
-                  aria-hidden
-                  className="absolute top-2 left-0 h-2.5 w-2.5 rounded-full"
-                  style={{ background: s.color }}
-                />
-                {i < PRINCIPLE_STEPS.length - 1 && (
-                  <span
-                    aria-hidden
-                    className="absolute top-5 bottom-0 left-[0.3rem] w-px bg-border"
-                  />
-                )}
-                <p
-                  className="font-display text-2xl leading-none font-extrabold sm:text-4xl"
-                  style={{ color: s.color }}
-                >
-                  {s.time}
-                </p>
-                <p className="eyebrow mt-2 text-foreground sm:mt-3">{s.label}</p>
-              </li>
-            ))}
-          </ol>
+          {/* Infografik: fester Start – variabler Zielpunkt – fester nächster Start */}
+          <div className="lg:self-center">
+            <PrincipleDiagram />
+          </div>
         </div>
       </section>
 
